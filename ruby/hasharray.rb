@@ -1,4 +1,10 @@
 a = [1, 2, 3]
 
-#not finish yet
-a.each_index {|x| [x, a[x]]} 
+#arraytohash
+Hash[*a.collect {|x| [a.index(x), x]}.flatten] 
+
+#iterate the Hash
+hash = Hash['fir', 123, 'sec', 'sec content']
+hash.each {|key, value| puts 'keys:', key, 'values:', value}
+hash.keys {puts}
+hash.values {puts}
