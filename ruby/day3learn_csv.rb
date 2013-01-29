@@ -16,7 +16,7 @@ class ActsAsCsv
 		@result
 	end
 
-	def initilize
+	def initialize
 		@result = []
 		read
 	end
