@@ -24,10 +24,10 @@ module ActsAsCsv
 		end
     
     def each
-      @csvrows.each {|row| yield}
+      @csvrows.each {|x| yield(x)}
     end
 
-		attr_accessor :csv_contents, :headers
+		attr_accessor :csv_contents, :headers, :csvrows
 
 		def initialize
 			read
@@ -41,8 +41,11 @@ class CsvRow
     headers.each_index do |i|
       head = headers[i]
       @row["#{head}"] = row[i]
-      puts row
     end
+  end
+
+  def method_missing(name, *args)
+    @row["#{name}"]
   end
 end
 
@@ -52,6 +55,4 @@ class RubyCsv
 end
 
 m = RubyCsv.new
-puts m.headers.inspect
-puts m.csv_contents.inspect
-m.each {|row| puts row.one}
+m.each {|x| puts x.tt1}
